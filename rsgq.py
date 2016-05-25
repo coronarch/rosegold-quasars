@@ -12,8 +12,12 @@ import os, zipfile, datetime
 # Get current date for log and organization
 now = datetime.datetime.now()
 now_str = str(now.year) + '-' + str(now.month) + '-' + str(now.day) + '\n'
-
 dir_needed = False
+
+temp_dir = ''
+musi_dir = ''
+down_dir = ''
+
 
 # Try to open rsgq log and config file 
 try:
@@ -35,5 +39,9 @@ try:
 			fp_1.close() 
 			dir_needed = True
 
+		
+
 except IOError as e:
 	print 'Cannot open RoSeGold-Quasars log file: %s' % e.strerror
+
+
