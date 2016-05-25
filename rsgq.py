@@ -9,10 +9,19 @@
 
 import os, zipfile, datetime
 
+# Get current date for log and organization
 now = datetime.datetime.now()
 now_str = str(now.year) + '-' + str(now.month) + '-' + str(now.day) + '\n'
 
 dir_needed = False
+
+# Try to open rsgq config file
+try:
+	fp = open('config.txt', 'r') 
+except IOError:
+	print 'Cannot open RoSeGold-Quasars configurations', arg
+else:
+	#TO-DO: read in directory information to variables
 
 # Try to open rsgq log file 
 try:

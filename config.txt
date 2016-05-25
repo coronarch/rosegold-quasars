@@ -1,2 +1,5 @@
-DOWNLOADS_PATH = 
-MUSIC_PATH =
+DOWNLOADS_PATH = "/home/six/Downloads/"
+MUSIC_PATH = "/home/six/Music/"
+TEMP_MASTER_PATH = "/home/six/Music/temp/"
+
+
