@@ -10,6 +10,8 @@
 import os, zipfile, datetime
 
 now = datetime.datetime.now()
+now_str = str(now.year) + '-' + str(now.month) + '-' + str(now.day) + '\n'
+
 dir_needed = False
 
 # Try to open rsgq log file 
@@ -18,13 +20,20 @@ try:
 except IOError:
 	print 'Cannot open RoSeGold-Quasars log file', arg
 else:
-	# Find the last date we used program
-	lines = fp.readlines()
-	last = lines[-1] 
-	
-	if (now != datetime.datetime.strptime(last, "%Y-%m-%d") ):
-		fp.write(str(now.year) + '-' + str(now.month) 
-			+ '-' + str(now.day) + '\n') 
+	if os.stat('log.txt').st_size != 0:
+		# Find the last date we used program
+		lines = fp.readlines()
+		last = lines[-1] 
+		
+		# If we haven't used rsgq today, create new log entry
+		if (now_str != last):
+			fp.write(now_str) 
+			fp.close() 
+			dir_needed = True
+	else:
+		# First time using rsgq
+		fp.write(now_str) 
 		fp.close() 
+		dir_needed = True
 
 
